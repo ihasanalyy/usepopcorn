@@ -1,3 +1,6 @@
+import { MovieSingleCard } from '../Components/MovieSingleCard';
+
+
 const MoviesCard = ({ movies }) => {
     return (
         <div className="movies-card">
@@ -13,11 +16,12 @@ const MoviesCard = ({ movies }) => {
 export { MoviesCard }
 
 const Card = ({ movie }) => {
+    
     return (
-        <div class="card mb-3 w-25 m-auto" >
+        <div class="card mb-3 w-25 m-auto" onClick={() =>( <MovieSingleCard />)} >
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img  class="img-fluid rounded-start" src={movie.Poster} alt="..." />
+                    <img class="img-fluid rounded-start" src={movie.Poster} alt="..." />
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
