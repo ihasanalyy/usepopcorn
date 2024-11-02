@@ -18,6 +18,10 @@ function App() {
   // USESATE FOR KEYWORD SERACH
   const [search, setSearch] = useState("");
 
+  const [id, setId] = useState("")
+
+  const [singleMovie, setSingleMovie] = useState([])
+
   const getMovies = async () => {
 
     const response = await fetch(`https://www.omdbapi.com/?s=${search}&apikey=2069fe59`)
@@ -26,6 +30,8 @@ function App() {
     console.log(data)
 
     SetMovies(data.Search)
+    // setId(data?.Search?.imdbID || "");
+    // console.log(id, '===>>nid')
 
     console.log(movies, "data araha hai")
 
@@ -34,16 +40,29 @@ function App() {
 
     getMovies();
   }, [search])
-
+ 
+  const openMovieHandler = (movie) =>{
+    console.log(movie, "movie clicked")
+    setId(movie.imdbID)
+    setSingleMovie(movie)
+  
+  }
   return (
 
     <div className="App">
-      <div className="container w-100 p-0 m-auto">
+      <div className="container-fluid w-100  m-auto">
         <Navbar setSearch={setSearch} movies={movies} />
       </div>
-      <div className="container mt-5 ms-5 d-flex border-danger justify-content-around align-items-center">
-        <MoviesCard movies={movies} />
-        <MovieSingleCard />
+      <div className="container-fluid w-100  m-auto d-flex">
+        <div className="container mt-5 ms-5 d-flex justify-content-around align-items-center w-50">
+          <MoviesCard movies={movies} onMovieClick={openMovieHandler} />
+        </div>
+        <div className='container mt-5'>
+          {
+            id ? (<MovieSingleCard id={id} singleMovie={singleMovie} />) : (<h1 className='text-center'>No Movie Selected</h1>)
+          }
+
+        </div>
       </div>
     </div>
 

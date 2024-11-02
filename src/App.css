@@ -7,9 +7,6 @@
   color: white;
 }
 .customNavbar input {
-  background-color: inherit;
+  /* background-color: inherit; */
   color: white;
-}
-.customNavbar input :active {
-  background-color: #6741d9;
 }

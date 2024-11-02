@@ -1,12 +1,12 @@
 import { MovieSingleCard } from '../Components/MovieSingleCard';
 
 
-const MoviesCard = ({ movies }) => {
+const MoviesCard = ({ movies, onMovieClick }) => {
     return (
-        <div className="movies-card">
+        <div className="movies-card w-100">
             {
                 movies?.map((movie, index) => (
-                    <Card movie={movie} key={index} />
+                    <Card movie={movie} key={index} onMovieClick={onMovieClick} />
                 ))
             }
         </div>
@@ -15,10 +15,9 @@ const MoviesCard = ({ movies }) => {
 }
 export { MoviesCard }
 
-const Card = ({ movie }) => {
-    
+const Card = ({ movie , onMovieClick }) => {
     return (
-        <div class="card mb-3 w-25 m-auto" onClick={() =>( <MovieSingleCard />)} >
+        <div class="card mb-3 w-100 m-auto"  onClick={() =>onMovieClick(movie)}>
             <div class="row g-0">
                 <div class="col-md-4">
                     <img class="img-fluid rounded-start" src={movie.Poster} alt="..." />
