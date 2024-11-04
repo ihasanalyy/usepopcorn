@@ -1,7 +1,9 @@
 import { MovieSingleCard } from '../Components/MovieSingleCard';
+import { useContext } from 'react';
+import {myContext} from '../App.js';
 
-
-const MoviesCard = ({ movies, onMovieClick }) => {
+const MoviesCard = () => {
+    const { movies, onMovieClick } = useContext(myContext); 
     return (
         <div className="movies-card w-100">
             {
