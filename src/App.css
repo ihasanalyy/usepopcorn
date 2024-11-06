@@ -10,3 +10,8 @@
   /* background-color: inherit; */
   color: white;
 }
+.toggleCss{
+  background-color: inherit !important;
+  color: inherit !important; 
+}
+

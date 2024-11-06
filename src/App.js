@@ -4,14 +4,13 @@ import Navbar from '../src/Components/Navbar';
 import { MoviesCard } from '../src/Components/MoviesCard';
 import { MovieSingleCard } from '../src/Components/MovieSingleCard';
 import { createContext, useEffect, useState } from 'react';
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
 
 export const myContext = createContext()
 
 function App() {
-// CONTEXT API
+  // CONTEXT API
   // USESTATE FOE MOVIES API
   const [movies, SetMovies] = useState([]);
 
@@ -21,6 +20,8 @@ function App() {
   const [id, setId] = useState("")
 
   const [singleMovie, setSingleMovie] = useState([])
+
+  const [themeHandler, setThemeHandler] = useState(false);
 
   const getMovies = async () => {
 
@@ -54,19 +55,24 @@ function App() {
       onMovieClick: openMovieHandler,
       singleMovie,
       id,
+      setThemeHandler,
+      themeHandler,
     }}>
 
       <div className="App">
-        <div className="container-fluid w-100  m-auto">
+        <div className="container-fluid w-100  m-auto ">
           <Navbar />
         </div>
-        <div className="container-fluid w-100  m-auto d-flex">
-          <div className="container mt-5 ms-5 d-flex justify-content-around align-items-center w-50">
+        <div className="container-fluid w-100  m-auto d-flex" style={{
+          backgroundColor: themeHandler ? "black" : "white",
+          color: themeHandler ? "white" : "black"
+        }}>
+          <div className="container mt-5 ms-5 d-flex justify-content-around align-items-center w-50 toggleCss">
             <MoviesCard />
           </div>
-          <div className='container mt-5 '>
+          <div className='container mt-5 toggleCss'>
             {
-              id ? (<MovieSingleCard />) : (<h1 className='text-center'>No Movie Selected</h1>)
+              id ? (<MovieSingleCard />) : (<h1 className='text-center'></h1>)
             }
 
           </div>
