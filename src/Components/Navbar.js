@@ -17,10 +17,10 @@ const Navbar = () => {
             <div class="container-fluid d-flex justify-content-between align-items-center customNavbar m-auto ">
                 <a class="navbar text-decoration-none">🍿 USEPOPCORN</a>
                 <form class="d-flex w-25 " role="search">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search" onChange={(e) => setSearch(e.target.value)} />
+                    <input class="form-control" type="search" placeholder="Find your Fav Movies!" aria-label="Search" onChange={(e) => setSearch(e.target.value)} />
                 </form>
-                <div onClick={toggleTheme}> <DarkModeIcon /> </div>
-                <p className="text-center">Found {movies?.length > 0 ? movies.length : 0} Results</p>
+                <div onClick={toggleTheme} className=''> <DarkModeIcon /> </div>
+                <p className="text-center mb-0">Found {movies?.length > 0 ? movies.length : 0} Results</p>
             </div>
         </nav>
     )
